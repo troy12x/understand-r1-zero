@@ -1051,7 +1051,7 @@ def answer_tag_reward_fn(model_response, gt_answer, fast=False):
 
 
 def answer_tag_reward_fn_for_orz(model_response, gt_answer, fast=False):
-    # We are a bit less strict about baselines.
+    # We are a bit less strict for baselines.
     if "<answer>" in model_response and "</answer>" in model_response:
         model_answer = model_response.split("<answer>")[-1].replace("</answer>", "")
         if "\\boxed" in model_answer:

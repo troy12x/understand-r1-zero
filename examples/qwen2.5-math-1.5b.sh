@@ -14,7 +14,7 @@
 
 # R1 template
 python train_zero_math.py \
-    --critic_type drppo \
+    --critic_type drgrpo \
     --gpus 8 \
     --enable_prefix_caching \
     --collocate \
@@ -57,12 +57,12 @@ python train_zero_math.py \
     --eval_data ./datasets/evaluation_suite \
     --eval_input_key input \
     --use-wb \
-    --wb-run-name qwen-2.5-Math-1.5b-oss_test-r1template \
+    --wb-run-name qwen2.5-Math-1.5b-r1-zero \
     --wb_project oat-zero
 
 # Qwen-Math template
 python train_zero_math.py \
-    --critic_type drppo \
+    --critic_type drgrpo \
     --gpus 8 \
     --enable_prefix_caching \
     --collocate \
@@ -79,7 +79,7 @@ python train_zero_math.py \
     --oracle_type reward \
     --oracle math \
     --pretrain Qwen/Qwen2.5-Math-1.5B \
-    --prompt_template qwen \
+    --prompt_template qwen_math \
     --zero-stage 2 \
     --ref_offload \
     --prompt_data ./datasets/train/math_12k \
@@ -105,5 +105,5 @@ python train_zero_math.py \
     --eval_data ./datasets/evaluation_suite \
     --eval_input_key input \
     --use-wb \
-    --wb-run-name qwen-2.5-Math-1.5b-oss_test-qwentemplate \
+    --wb-run-name qwen2.5-Math-1.5b-r1-zero-qwenmath_template \
     --wb_project oat-zero

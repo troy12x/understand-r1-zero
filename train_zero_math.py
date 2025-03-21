@@ -15,7 +15,6 @@
 import functools
 import itertools
 import logging
-import os
 import time
 from dataclasses import dataclass, field
 from multiprocessing import Pool, TimeoutError
@@ -24,9 +23,6 @@ from typing import Any, List, Literal, Tuple
 import numpy as np
 import torch
 import tree
-
-print(os.environ["LD_LIBRARY_PATH"])
-
 from oat.actors.base import ActorBase
 from oat.algorithms.ppo import PPOActor, PPOArgs, PPOLearner
 from oat.args import default_args_validation, get_default_args
