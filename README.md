@@ -33,7 +33,7 @@
 
 * **There May Not Be Aha Moment in R1-Zero-like Training — A Pilot Study**
   * 📄 [Blog](https://oatllm.notion.site/oat-zero)
-  * 💻 [Codes](https://github.com/sail-sg/oat-zero)
+  * 💻 [Code](https://github.com/sail-sg/oat-zero)
 
 * **OAT: A research-friendly framework for LLM online alignment**
   * 💻 [Codebase](https://github.com/sail-sg/oat)
@@ -90,9 +90,11 @@ If you are interested in more details, please check out our [paper](./understand
 
 ### Install
 
+We recommend a clean `python==3.10` environment for development.
+
 ```diff
 # Install vllm & oat, the LLM RL framework we developed r1-zero training on.
-pip install vllm==0.7.2 && pip install -U oat-llm==0.0.9
+pip install vllm==0.7.2 && pip install oat-llm==0.0.9
 
 # Install this package locally to use the math grader.
 git clone git@github.com:sail-sg/understand-r1-zero.git && cd understand-r1-zero
