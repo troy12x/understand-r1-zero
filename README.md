@@ -45,13 +45,13 @@ and **reinforcement learning**. We highlight our findings below.
 ### On base models:
 1. **DeepSeek-V3-Base already exhibit "Aha moment"**.
 <p align="center">
-  <img src="./assets/deepseek-base-aha.png" width=65%/>
+  <img src="./assets/deepseek-base-aha.png" width=70%/>
 </p>
 
 2. As the popular choice for R1-Zero-like training, Qwen2.5 base models demonstrate strong reasoning capabilities
 even **without** prompt templates: the average benchmark scores improve by **~60%** (compared to the traditional 4-shot prompting)!
 <p align="center">
-  <img src="./assets/qwen-math-base-scores.png" width=65%/>
+  <img src="./assets/qwen-math-base-scores.png" width=70%/>
 </p>
 
 ### On reinforcement learning:
@@ -59,20 +59,20 @@ even **without** prompt templates: the average benchmark scores improve by **~60
 3. GRPO leads to **biased** optimization! We propose a simple fix that improves token efficiency
 while maintaining reasoning performance, termed as Dr. GRPO (GRPO **D**one **R**ight).
 <p align="center">
-  <img src="./assets/drgrpo.png" width=65%/>
+  <img src="./assets/drgrpo.png" width=80%/>
 </p>
 
 4. In R1-Zero-like training, the template and the question set perform a duet to affect the RL dynamics
    * (Left Plot) For Qwen2.5-Math-1.5B, a mismatched template (e.g., R1 template) in fact **destructs the reasoning capabilities before RL reconstructing it**. This makes the improvement impressive on the surface.
    * (Middle Plot) However, if a template does not deviate from the pretraining distribution too far, even a small and completely o.o.d. question set (e.g., GSM8K) could induce the reasoning ability equally well, by reinforcing correct reasoning behaviors instead of infusing new knowledge.
 <p align="center">
-  <img src="./assets/template-data-duet.png" width=65%/>
+  <img src="./assets/template-data-duet.png" width=80%/>
 </p>
 
 5. Beyond Qwen, Llama can also be RL-tuned from base models. In this case, domain-specific pretraining will improves RL ceiling.
    * (Right Plot) GRPO can even make Llama with math knowledge "Aha" by increasing the output length; however, it is likely due to its length bias, which can be removed by Dr. GRPO.
  <p align="center">
-  <img src="./assets/llama-r1-zero.png" width=65%/>
+  <img src="./assets/llama-r1-zero.png" width=70%/>
 </p>
 
 ### Our minimalist R1-Zero recipe:
