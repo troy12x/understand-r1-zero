@@ -2,7 +2,7 @@
 
 # Understanding R1-Zero-Like Training: A Critical Perspective
 
-[![Paper](https://img.shields.io/badge/Paper-8CA1AF?logo=readthedocs&logoColor=white)](https://arxiv.org/abs/2502.01456)
+[![Paper](https://img.shields.io/badge/Paper-8CA1AF?logo=readthedocs&logoColor=white)](./understand-r1-zero.pdf)
 
 [![Github](https://img.shields.io/badge/Understand%20R1%20Zero-000000?style=for-the-badge&logo=github&logoColor=000&logoColor=white)](https://github.com/sail-sg/understand-r1-zero)  [![Hugging Face Collection](https://img.shields.io/badge/Model_Collection-fcd022?style=for-the-badge&logo=huggingface&logoColor=000)](https://huggingface.co/collections/sail/oat-zero-understanding-r1-zero-like-training-67dcdb07b9f3eb05f1501c4a)
 
@@ -92,7 +92,7 @@ If you are interested in more details, please check out our [paper](./understand
 
 ```diff
 # Install vllm & oat, the LLM RL framework we developed r1-zero training on.
-pip install vllm==0.7.2 && pip install -U oat-llm
+pip install vllm==0.7.2 && pip install -U oat-llm==0.0.9
 
 # Install this package locally to use the math grader.
 git clone git@github.com:sail-sg/understand-r1-zero.git && cd understand-r1-zero
@@ -101,11 +101,14 @@ pip install -e .
 
 ### Training
 
+We implement R1-Zero training by extending Oat's Learner and Actor components. Please see [train_zero_math.py](./train_zero_math.py) for a step-by-step guide.
+
 ```diff
 # Patch LD_LIBRARY_PATH to avoid dependency errors:
 export LD_LIBRARY_PATH=$(python -c "import sysconfig; print(sysconfig.get_config_var('LIBDIR'))"):$LD_LIBRARY_PATH
 
-# Run the experiment (tested on 8 x A100-40G):
+# Run the experiment (tested on 8 x A100-40G) with Dr. GRPO:
+# (change to `--critic_type grpo` for running GRPO)
 python train_zero_math.py \
     --critic_type drgrpo \
     --gpus 8 \
@@ -153,6 +156,7 @@ python train_zero_math.py \
     --wb-run-name qwen2.5-Math-1.5b-r1-zero \
     --wb_project oat-zero
 ```
+Please see [here](./examples/) for more example scripts.
 
 ### Evaluation
 ```diff
@@ -162,6 +166,8 @@ python evaluate_model.py --model_name sail/Qwen2.5-Math-1.5B-Oat-Zero
 python evaluate_model.py --model_name sail/Llama-3.2-3B-Oat-Zero --template r1
 
 # Evaluate baseline models:
+python evaluate_model.py --model_name Qwen/Qwen2.5-Math-1.5B
+python evaluate_model.py --model_name Qwen/Qwen2.5-Math-7B
 python evaluate_model.py --model_name hkust-nlp/Qwen-2.5-Math-7B-SimpleRL-Zero
 python evaluate_model.py --model_name PRIME-RL/Eurus-2-7B-PRIME-Zero
 python evaluate_model.py --model_name Open-Reasoner-Zero/Open-Reasoner-Zero-7B
