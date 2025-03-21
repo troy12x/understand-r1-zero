@@ -166,7 +166,6 @@ output
 cmd
 # notebooks
 *.csv
-*.pdf
 *.ttf
 responses
 data
