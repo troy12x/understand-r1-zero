@@ -79,7 +79,7 @@ while maintaining reasoning performance, termed as Dr. GRPO (GRPO **D**one **R**
 Our analysis suggests a minimalist recipe for R1-Zero-like training: 
 
 We RL-tune Qwen2.5-
-Math-7B using the (unbiased) Dr. GRPO algorithm on MATH level 3-5 questions with the Qwen-Math template, and achieve state-of-the-art performance with only 27 hours compute on 8× A100 GPUs
+Math-7B using the (unbiased) Dr. GRPO algorithm on MATH level 3-5 questions with the Qwen-Math template, and achieve state-of-the-art performance with only 27 hours compute on 8× A100 GPUs.
  <p align="center">
   <img src="./assets/benchmark.png" width=90%/>
 </p>
@@ -178,7 +178,7 @@ python evaluate_model.py --model_name Open-Reasoner-Zero/Open-Reasoner-Zero-7B
 ## Citation
 
 If you find our work useful for your research, please consider citing:
-```
+```bibtex
 @misc{liu2025understanding,
   title={Understanding R1-Zero-Like Training: A Critical Perspective},
   author={Zichen Liu and Changyu Chen and Wenjun Li and Penghui Qi and Tianyu Pang and Chao Du and Wee Sun Lee and Min Lin},
