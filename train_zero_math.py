@@ -40,19 +40,18 @@ from understand_r1_zero.math_grader import (answer_tag_reward_fn,
 1. To do RL from base models, we use proper prompt template to make the base model answer questions.
 """
 
-
 def apply_qwen_math_template(question: str):
     return (
-        "<|im_start|>system\nPlease reason step by step, and put your final answer within \\boxed{}.<|im_end|>\n<|im_start|>user\n"
+        "<｜User｜>Please reason step by step, and put your final answer within \\boxed{}.\n"
         + question
-        + "<|im_end|>\n<|im_start|>assistant\n"
+        + "<｜end▁of▁sentence｜>\n"
+        "<｜Assistant｜>"
     )
-
 
 def apply_r1_template(question: str):
     return (
         "A conversation between User and Assistant. The User asks a question, and the Assistant solves it. The Assistant first thinks about the reasoning process in the mind and then provides the User with the answer. "
-        "The reasoning process is enclosed within <think> </think> and answer is enclosed within <answer> </answer> tags, respectively, i.e., <think> reasoning process here </think> <answer> answer here </answer>.\nUser: "
+        "The reasoning process is enclosed within <think> </think> respectively, i.e., <think> reasoning process here </think> your answer here .\nUser: "
         + question
         + "\nAssistant: <think>"
     )
