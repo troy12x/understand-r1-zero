@@ -97,7 +97,7 @@ We recommend a clean `python==3.10` environment for development.
 pip install vllm==0.7.2 && pip install oat-llm==0.0.9
 
 # Install this package locally to use the math grader.
-git clone git@github.com:sail-sg/understand-r1-zero.git && cd understand-r1-zero
+git clone git@github.com:troy12x/understand-r1-zero.git && cd understand-r1-zero
 pip install -e .
 ```
 
@@ -128,7 +128,7 @@ python train_zero_math.py \
     --beta 0 \
     --oracle_type reward \
     --oracle math \
-    --pretrain Qwen/Qwen2.5-Math-1.5B \
+    --pretrain qihoo360/Light-R1-7B-DS \
     --prompt_template r1 \
     --zero-stage 2 \
     --ref_offload \
@@ -142,16 +142,16 @@ python train_zero_math.py \
     --num_samples 8 \
     --temperature 1 \
     --top_p 1 \
-    --generate_max_length 3000 \
+    --generate_max_length 8129 \
     --save_steps -1 \
     --train_batch_size 128 \
     --rollout_batch_size 128 \
     --rollout_batch_size_per_device 16 \
     --pi_buffer_maxlen_per_device 128 \
-    --eval_batch_size 200 \
+    --eval_batch_size 40 \
     --eval_steps 16 \
     --eval_temperature 0 \
-    --eval_generate_max_length 3000 \
+    --eval_generate_max_length 8129 \
     --eval_data ./datasets/evaluation_suite \
     --eval_input_key input \
     --use-wb \
