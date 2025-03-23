@@ -117,7 +117,7 @@ python train_zero_math.py \
     --enable_prefix_caching \
     --collocate \
     --vllm_sleep \
-    --vllm_gpu_ratio 0.35 \
+    --vllm_gpu_ratio 0.40 \
     --gradient-checkpointing \
     --flash-attn \
     --bf16 \
